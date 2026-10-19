@@ -26,6 +26,6 @@ class Paciente extends Pessoa{
     }
     public static function listar(){
         
-        return null;
+        return (new DataBase()->select())->fetchALL;
     }
 }
