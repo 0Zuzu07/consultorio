@@ -1,0 +1,9 @@
+{
+    "name":"ifto/consultorio",
+    "autoload":{
+
+        "psr-4":{
+            "App\\":"app/"
+        }
+    }
+}
