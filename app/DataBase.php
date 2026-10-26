@@ -34,11 +34,15 @@ class DataBase{
     public function insert($array){
         $fields = array_keys($array);
         $binds = array_pad([],count($array),'?');
-        $query = 'insert into '.$this->table.'('.implode(', ',$fields).')
-         values('.implode(', ',$binds).')';
-        $this->execute($query, array_values($array));
-        return $this->connection->lastInsertId();
+        $query = 'update '.$this->table.' set '.implode($binds,$fields).'=? where '.$where;
         
+        return $this->execute($query,array_values($array));
+        
+    }
+
+    public function listar(){
+        $query = 'select * from '.$this->table.' where '.$where;
+        return $this->execute($query);
     }
 
 }

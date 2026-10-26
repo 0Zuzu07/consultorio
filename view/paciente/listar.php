@@ -5,10 +5,11 @@ include('../includes/menu.php');
 include('../includes/rodape.php');
 $pacientes = Paciente::listar();
 ?>
+    <button class="btn btn-sucess">Novo Paciente</button>
 <main class="container">
     <h1>Lista de Pacientes</h1>
-    <table>
-        <thead>
+    <table class="table table-hover">
+        <thead class="table-dark">
             <tr>
                 <th>Nome</th>
                 <th>CPF</th>
@@ -18,7 +19,7 @@ $pacientes = Paciente::listar();
                 <th>Endereco</th>
                 <th>Convênio</th>
                 <th>Observação</th>
-                <th>Ações</th>
+                <th colspan="2">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -27,17 +28,18 @@ $pacientes = Paciente::listar();
         echo "<tr>
         <td>".$paciente->nome."</td>
         <td>".$paciente->cpf."</td>
-        <td>".$paciente->data_nascimento."</td>
+        <td>".date("dd/m/Y",strtotime($paciente->data_nascimento))."</td>
         <td>".$paciente->telefone."</td>
         <td>".$paciente->email."</td>
         <td>".$paciente->endereco."</td>
         <td>".$paciente->convenio."</td>
         <td>".$paciente->observacao."</td>
         <td>
-        <a href='editar.php?id=".$paciente->id."'>
+        <td> <a href='editar.php?id=".$paciente->id."'><
+        <button class='btn-primary'>Editar</button></a></td>
         <a href='/consultorio/action/action_paciente.php?
-        action=excluir&id=".$paciente->id."'>
-        </td>
+        action=excluir&id=".$paciente->id."'>Excluir</a>
+        <button class='btn-danger'>Excluir</button></a></td>
         </tr>";
     }
 ?>
